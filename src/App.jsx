@@ -6,6 +6,10 @@ import Solutions from './pages/Solutions';
 import ManagedServices from './pages/ManagedServices';
 import Contact from './pages/Contact';
 import CloudMigration from './pages/CloudMigration';
+import InfrastructureSecurity from './pages/InfrastructureSecurity';
+import BusinessContinuity from './pages/BusinessContinuity';
+import DataAutomation from './pages/DataAutomation';
+import DataCenterSolutions from './pages/DataCenterSolutions';
 
 // Basic placeholders for missing pages
 const Placeholder = ({ title }) => (
@@ -26,12 +30,12 @@ function App() {
                     {/* Defined routes in the prompt but not fully implemented yet */}
                     <Route path="/managed-services" element={<ManagedServices />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/kts-it-infrastructure-security-solutions" element={<Placeholder title="IT Infrastructure & Security" />} />
+                    <Route path="/kts-it-infrastructure-security-solutions" element={<InfrastructureSecurity />} />
                     <Route path="/kts-cloud-migration-solution" element={<CloudMigration />} />
-                    <Route path="/kloud-tech-business-continuity-solution" element={<Placeholder title="Business Continuity" />} />
-                    <Route path="/kts-data-center-solution" element={<Placeholder title="Data Center Solutions" />} />
+                    <Route path="/kloud-tech-business-continuity-solution" element={<BusinessContinuity />} />
+                    <Route path="/kts-data-center-solution" element={<DataCenterSolutions />} />
                     <Route path="/kts-cloud-services" element={<Placeholder title="Cloud Services" />} />
-                    <Route path="/kts-data-extraction-automation" element={<Placeholder title="Data Extraction & Automation" />} />
+                    <Route path="/kts-data-extraction-automation" element={<DataAutomation />} />
 
                     {/* Fallback */}
                     <Route path="*" element={<Navigate to="/" replace />} />
