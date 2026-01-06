@@ -10,6 +10,7 @@ import InfrastructureSecurity from './pages/InfrastructureSecurity';
 import BusinessContinuity from './pages/BusinessContinuity';
 import DataAutomation from './pages/DataAutomation';
 import DataCenterSolutions from './pages/DataCenterSolutions';
+import CloudServices from './pages/CloudServices';
 
 // Basic placeholders for missing pages
 const Placeholder = ({ title }) => (
@@ -34,7 +35,7 @@ function App() {
                     <Route path="/kts-cloud-migration-solution" element={<CloudMigration />} />
                     <Route path="/kloud-tech-business-continuity-solution" element={<BusinessContinuity />} />
                     <Route path="/kts-data-center-solution" element={<DataCenterSolutions />} />
-                    <Route path="/kts-cloud-services" element={<Placeholder title="Cloud Services" />} />
+                    <Route path="/kts-cloud-services" element={<CloudServices />} />
                     <Route path="/kts-data-extraction-automation" element={<DataAutomation />} />
 
                     {/* Fallback */}
