@@ -124,7 +124,7 @@ const ExpertiseGrid = () => {
     const cards = [
         { title: "Managed Services", icon: <Layers size={24} />, desc: "Complete lifecycle management of your cloud assets.", link: "/managed-services", size: "large" },
         { title: "IT Infrastructure & Security", icon: <Shield size={24} />, desc: "Hardened infrastructure designed for the modern threat landscape.", link: "/kts-it-infrastructure-security-solutions", size: "small" },
-        { title: "Cloud Services", icon: <Cloud size={24} />, desc: "Migration, modernization, and cloud-native development.", link: "/kts-cloud-services", size: "small" },
+        { title: "Cloud Migration", icon: <Cloud size={24} />, desc: "Seamless transition of your workloads with zero-downtime strategies.", link: "/kts-cloud-migration-solution", size: "small" },
         { title: "Microsoft 365 & Azure", icon: <Cpu size={24} />, desc: "Fully integrated Microsoft ecosystems for enterprise productivity.", link: "/kts-cloud-services", size: "small" },
         { title: "Data Extraction & Automation", icon: <Database size={24} />, desc: "Automate workflows and unlock insights from your data silos.", link: "/kts-data-extraction-automation", size: "large" },
         { title: "Business Continuity", icon: <Zap size={24} />, desc: "Resilient strategy for seamless transitions during disruptions.", link: "/kloud-tech-business-continuity-solution", size: "small" }

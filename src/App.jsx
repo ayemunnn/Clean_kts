@@ -4,6 +4,8 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Solutions from './pages/Solutions';
 import ManagedServices from './pages/ManagedServices';
+import Contact from './pages/Contact';
+import CloudMigration from './pages/CloudMigration';
 
 // Basic placeholders for missing pages
 const Placeholder = ({ title }) => (
@@ -23,9 +25,9 @@ function App() {
 
                     {/* Defined routes in the prompt but not fully implemented yet */}
                     <Route path="/managed-services" element={<ManagedServices />} />
-                    <Route path="/contact" element={<Placeholder title="Contact Us" />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/kts-it-infrastructure-security-solutions" element={<Placeholder title="IT Infrastructure & Security" />} />
-                    <Route path="/kts-cloud-migration-solution" element={<Placeholder title="Cloud Migration" />} />
+                    <Route path="/kts-cloud-migration-solution" element={<CloudMigration />} />
                     <Route path="/kloud-tech-business-continuity-solution" element={<Placeholder title="Business Continuity" />} />
                     <Route path="/kts-data-center-solution" element={<Placeholder title="Data Center Solutions" />} />
                     <Route path="/kts-cloud-services" element={<Placeholder title="Cloud Services" />} />
