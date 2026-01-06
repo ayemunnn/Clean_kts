@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Solutions from './pages/Solutions';
+import ManagedServices from './pages/ManagedServices';
 
 // Basic placeholders for missing pages
 const Placeholder = ({ title }) => (
@@ -21,7 +22,7 @@ function App() {
                     <Route path="/solutions" element={<Solutions />} />
 
                     {/* Defined routes in the prompt but not fully implemented yet */}
-                    <Route path="/managed-services" element={<Placeholder title="Managed Services" />} />
+                    <Route path="/managed-services" element={<ManagedServices />} />
                     <Route path="/contact" element={<Placeholder title="Contact Us" />} />
                     <Route path="/kts-it-infrastructure-security-solutions" element={<Placeholder title="IT Infrastructure & Security" />} />
                     <Route path="/kts-cloud-migration-solution" element={<Placeholder title="Cloud Migration" />} />

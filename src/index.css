@@ -1044,6 +1044,415 @@ button {
     }
 }
 
+/* Managed Services Specific Styles */
+.cockpit-ui {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-hover);
+    border: 1px solid #eee;
+    overflow: hidden;
+    max-width: 480px;
+    margin-left: auto;
+}
+
+.cockpit-header {
+    background: #f8f9fa;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.cockpit-body {
+    padding: 1.5rem;
+}
+
+.cockpit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.cockpit-tile {
+    background: #fcfcfc;
+    border: 1px solid #f0f0f0;
+    padding: 1.25rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.tile-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.tile-value {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+}
+
+.tile-value.green {
+    color: #10b981;
+}
+
+.alert-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 0.5rem;
+}
+
+.alert-item {
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+
+.alert-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 6px;
+    z-index: 2;
+}
+
+.alert-dot.green {
+    background: #10b981;
+}
+
+.alert-dot.blue {
+    background: #0066ff;
+}
+
+.alert-dot.orange {
+    background: #f59e0b;
+}
+
+.alert-line {
+    position: absolute;
+    left: 4px;
+    top: 15px;
+    width: 2px;
+    height: calc(100% + 1rem);
+    background: #eee;
+    z-index: 1;
+}
+
+.alert-info p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.alert-info span {
+    font-size: 0.75rem;
+    color: #999;
+}
+
+/* Managed Services Grid */
+.managed-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.service-card-alt {
+    background: #f8f9fa;
+    padding: 2.5rem 2rem;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.service-card-alt:hover {
+    background: white;
+    border-color: #eee;
+    box-shadow: var(--shadow-soft);
+}
+
+.service-card-alt .card-icon {
+    margin-bottom: 1.5rem;
+    color: var(--accent-primary);
+}
+
+.service-card-alt h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.service-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.service-bullets li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.check-icon {
+    color: #10b981;
+    flex-shrink: 0;
+}
+
+/* Engagement Model */
+.engagement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.engagement-card {
+    background: white;
+    padding: 3rem 2.5rem;
+    border-radius: var(--border-radius-lg);
+    border: 1px solid #eee;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.engagement-card.popular {
+    border: 2px solid var(--accent-primary);
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 102, 255, 0.1);
+    z-index: 2;
+}
+
+.popular-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--accent-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.eng-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.price-label {
+    font-weight: 800;
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+}
+
+.best-for {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.eng-deliverables {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.deliverable-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* Process Timeline */
+.process-timeline {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+}
+
+.process-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 24px;
+    height: 24px;
+    background: #eee;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-icon-box {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--accent-primary);
+}
+
+.process-step h4 {
+    margin-bottom: 0.75rem;
+}
+
+.process-step p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.step-connector {
+    position: absolute;
+    top: 30px;
+    left: calc(50% + 40px);
+    width: calc(100% - 80px);
+    height: 1px;
+    border-top: 2px dashed #eee;
+    z-index: 1;
+}
+
+/* Social Proof Managed */
+.social-proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.quote-icon {
+    color: var(--accent-primary);
+    opacity: 0.2;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-card p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.t-author strong {
+    display: block;
+    font-size: 1rem;
+}
+
+.t-author span {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.metrics-box-managed {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.metric-managed {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid #f0f0f0;
+}
+
+.m-val {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+    font-family: 'Outfit', sans-serif;
+}
+
+.m-label {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .managed-services-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .engagement-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .engagement-card.popular {
+        transform: none;
+    }
+
+    .process-timeline {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .step-connector {
+        display: none;
+    }
+
+    .social-proof-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .managed-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cockpit-ui {
+        margin: 0 auto;
+    }
+}
+
 .full-width {
     width: 100%;
     justify-content: center;
