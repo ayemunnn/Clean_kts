@@ -192,18 +192,26 @@ button {
 
 /* Hero */
 .hero-section {
-    padding: 4rem 0;
+    padding: 2.5rem 0;
     position: relative;
 }
 
 /* The Bold Orange Hero Panel */
 .hero-panel {
     background: linear-gradient(135deg, #f97316 0%, #fb923c 40%, #f97316 100%);
-    border-radius: 40px;
+    border-radius: 44px;
     position: relative;
     overflow: hidden;
-    padding: 80px 64px;
+    padding: 48px 64px;
     box-shadow: 0 40px 100px -20px rgba(249, 115, 22, 0.3);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+.hero-panel:hover {
+    background: linear-gradient(135deg, #ea580c 0%, #f97316 50%, #ea580c 100%);
+    transform: translateY(-10px);
+    box-shadow: 0 60px 120px -20px rgba(249, 115, 22, 0.45);
 }
 
 .hero-panel::before {
@@ -231,7 +239,7 @@ button {
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(16px);
     border-radius: 32px;
-    padding: 56px;
+    padding: 48px;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -409,7 +417,7 @@ button {
 .visual-stack {
     position: relative;
     width: 100%;
-    height: 520px;
+    height: 460px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -457,7 +465,7 @@ button {
 .main-desktop-card {
     position: absolute;
     width: 85%;
-    height: 340px;
+    height: 300px;
     background: white;
     border-radius: 24px;
     box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08), 0 18px 36px -18px rgba(0, 0, 0, 0.1);
@@ -489,8 +497,8 @@ button {
 
 .mobile-mockup {
     position: absolute;
-    width: 180px;
-    height: 380px;
+    width: 160px;
+    height: 340px;
     background: #0f172a;
     border-radius: 36px;
     box-shadow: 0 60px 120px -30px rgba(0, 0, 0, 0.3), 0 40px 80px -40px rgba(0, 0, 0, 0.4);
