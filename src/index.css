@@ -384,66 +384,81 @@ button {
     opacity: 0.6;
 }
 
-/* Hero Visualization Stack */
+/* Hero Visualization Stack - Premium Floating Scene */
 .visual-stack {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 520px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.accent-block {
+.visual-stage {
+    position: absolute;
+    width: 90%;
+    height: 75%;
+    background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+    border-radius: 40px;
+    z-index: 0;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(249, 115, 22, 0.1);
+    right: 0;
+    bottom: 5%;
+}
+
+.visual-glow {
     position: absolute;
     width: 80%;
     height: 80%;
-    background: var(--accent-primary);
-    border-radius: var(--border-radius-xl);
+    background: radial-gradient(circle at 60% 40%, rgba(249, 115, 22, 0.12), transparent 70%);
+    filter: blur(80px);
     z-index: 1;
-    transform: rotate(-3deg);
-    opacity: 0.1;
+    pointer-events: none;
 }
 
 .main-desktop-card {
     position: absolute;
-    width: 90%;
+    width: 85%;
     height: 340px;
     background: white;
-    border-radius: var(--border-radius-lg);
-    box-shadow: var(--shadow-xl);
-    z-index: 2;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08), 0 18px 36px -18px rgba(0, 0, 0, 0.1);
+    z-index: 10;
     overflow: hidden;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    left: 0;
+    top: 10%;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .floating-feature-card {
     position: absolute;
-    width: 220px;
-    background: white;
+    width: 280px;
     padding: 1.5rem;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-lg);
-    z-index: 4;
-    top: 15%;
-    left: -10%;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+    z-index: 20;
+    top: 5%;
+    left: -8%;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    border: 1px solid rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .mobile-mockup {
     position: absolute;
     width: 180px;
     height: 380px;
-    background: #1e293b;
+    background: #0f172a;
     border-radius: 36px;
-    box-shadow: var(--shadow-xl);
-    z-index: 3;
-    right: -5%;
-    bottom: -10%;
-    border: 8px solid #0f172a;
+    box-shadow: 0 60px 120px -30px rgba(0, 0, 0, 0.3), 0 40px 80px -40px rgba(0, 0, 0, 0.4);
+    z-index: 30;
+    right: -2%;
+    bottom: -8%;
+    border: 8px solid #1e293b;
     overflow: hidden;
 }
 
@@ -987,7 +1002,15 @@ button {
 
     .floating-feature-card {
         display: none;
-        /* Hide floating card on very small mobile for clarity */
+    }
+
+    .visual-stage {
+        width: 100%;
+        right: 0;
+    }
+
+    .visual-stack {
+        height: 480px;
     }
 
     .mobile-mockup {

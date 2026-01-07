@@ -42,14 +42,22 @@ const Hero = () => {
 
                 <motion.div
                     className="hero-right visual-stack"
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, delay: 0.2 }}
                 >
-                    <div className="accent-block"></div>
+                    {/* Layer A: Stage Panel */}
+                    <div className="visual-stage"></div>
 
-                    {/* Main Desktop Card */}
-                    <div className="main-desktop-card">
+                    {/* Layer B: Glow Aura */}
+                    <div className="visual-glow"></div>
+
+                    {/* Layer C: Main Dashboard (Slow Flow) */}
+                    <motion.div
+                        className="main-desktop-card"
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    >
                         <div className="mock-header">
                             <div className="dots"><span></span><span></span><span></span></div>
                             <div className="mock-search"><LayoutDashboard size={12} style={{ marginRight: '6px' }} /> Infrastructure Overview</div>
@@ -73,42 +81,48 @@ const Hero = () => {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Floating Feature Card */}
+                    {/* Layer D: Floating Feature Card (Fast Flow) */}
                     <motion.div
                         className="floating-feature-card"
-                        animate={{ y: [0, -20, 0] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
+                        animate={{ y: [0, -14, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 30px 60px rgba(0,0,0,0.15)" }}
                     >
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <div className="mini-circle"></div>
                             <span style={{ fontWeight: 700, fontSize: '0.9rem' }}>Cloud Services</span>
                         </div>
-                        <div className="mini-bar" style={{ width: '100%' }}></div>
+                        <div className="mini-bar orange" style={{ width: '100%', marginTop: '4px' }}></div>
                         <div className="mini-bar" style={{ width: '80%' }}></div>
-                        <div style={{ marginTop: '4px', borderTop: '1px solid #f0f0f0', paddingTop: '8px' }}>
+                        <div style={{ marginTop: '8px', borderTop: '1px solid #f0f0f0', paddingTop: '8px' }}>
                             <PieChart size={24} color="var(--accent-primary)" opacity={0.6} />
                         </div>
                     </motion.div>
 
-                    {/* Mobile Mockup */}
+                    {/* Layer E: Phone Mock (Medium Flow) */}
                     <motion.div
                         className="mobile-mockup"
                         initial={{ x: 20, y: 20 }}
-                        animate={{ x: 0, y: 0 }}
-                        transition={{ duration: 1, delay: 0.4 }}
+                        animate={{
+                            x: 0,
+                            y: [0, -12, 0]
+                        }}
+                        transition={{
+                            x: { duration: 1, delay: 0.4 },
+                            y: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }
+                        }}
                     >
                         <div className="mock-dashboard-mini">
-                            <div style={{ height: '20px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', width: '50%', marginBottom: '1rem' }}></div>
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '1rem' }}>
-                                <div style={{ height: '60px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}></div>
-                                <div style={{ height: '60px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px' }}></div>
+                            <div style={{ height: '20px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', width: '50%', marginBottom: '1.25rem' }}></div>
+                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '1.25rem' }}>
+                                <div style={{ height: '60px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}></div>
+                                <div style={{ height: '60px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px' }}></div>
                             </div>
-                            <div style={{ height: '100px', background: 'rgba(255,255,255,0.05)', borderRadius: '8px', padding: '12px', display: 'flex', alignItems: 'flex-end', gap: '4px' }}>
+                            <div style={{ height: '120px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-end', gap: '6px' }}>
                                 {[40, 60, 30, 80, 50].map((h, i) => (
-                                    <div key={i} style={{ flex: 1, background: 'var(--accent-primary)', height: `${h}%`, borderRadius: '2px', opacity: 0.6 }}></div>
+                                    <div key={i} style={{ flex: 1, background: 'var(--accent-primary)', height: `${h}%`, borderRadius: '3px', opacity: 0.7 }}></div>
                                 ))}
                             </div>
                         </div>
