@@ -234,12 +234,11 @@ const CapabilitySection = () => {
                 <div>
                     <h2 className="section-title">Business Continuity Solution</h2>
                     <p className="text-secondary" style={{ marginBottom: '2rem' }}>
-                        When it comes to business continuity Kloud tech is one stop solution. Our Cloud computing provides IT resilience during disruptions, especially when remote work becomes necessary. We look for solutions that align with your organization’s needs and priorities.
+                        When it comes to business continuity, Kloud Tech is your one-stop solution. Our cloud computing services provide IT resilience during disruptions—especially when remote work becomes necessary. We evaluate cloud services as part of your business continuity planning and recommend solutions that align with your organization’s needs and priorities.
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
                         <div className="chip"><CheckCircle2 size={18} color="var(--accent-primary)" /> Secure Data Storage</div>
                         <div className="chip"><CheckCircle2 size={18} color="var(--accent-primary)" /> Super-fast Disaster Recovery</div>
-                        <div className="chip"><CheckCircle2 size={18} color="var(--accent-primary)" /> IT Resilience during disruptions</div>
                     </div>
                     <Link to="/kloud-tech-business-continuity-solution" className="btn btn-primary">Know More</Link>
                 </div>
@@ -336,15 +335,35 @@ const Home = () => {
     return (
         <main style={{ backgroundColor: 'var(--bg-primary)' }}>
             <Hero />
-            <div className="section-padding" style={{ borderTop: '1px solid #f0f0f0', borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
-                <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', opacity: 0.6 }}>
-                    <span style={{ fontWeight: 800, fontSize: '1.2rem' }}>AZURE</span>
-                    <span style={{ fontWeight: 800, fontSize: '1.2rem' }}>AWS</span>
-                    <span style={{ fontWeight: 800, fontSize: '1.2rem' }}>GOOGLE CLOUD</span>
-                    <span style={{ fontWeight: 800, fontSize: '1.2rem' }}>MICROSOFT 365</span>
-                    <span style={{ fontWeight: 800, fontSize: '1.2rem' }}>LINUX</span>
+            <section className="partners-section">
+                <div className="container">
+                    <div className="partners-grid">
+                        {[
+                            { name: 'Microsoft', id: 'microsoft' },
+                            { name: 'Sophos', id: 'sophos' },
+                            { name: 'Motadata', id: 'motadata' },
+                            { name: 'ASUS', id: 'asus' },
+                            { name: 'Dell', id: 'dell' },
+                            { name: 'Lenovo', id: 'lenovo' },
+                            { name: 'Adobe', id: 'adobe' },
+                            { name: 'AWS', id: 'aws' },
+                        ].map((partner) => (
+                            <div key={partner.id} className="partner-logo-container" title={partner.name}>
+                                <img
+                                    src={`/src/assets/logos/${partner.id}.png`}
+                                    alt={`${partner.name} logo`}
+                                    className="partner-logo-img"
+                                    loading="lazy"
+                                    onError={(e) => {
+                                        e.target.style.display = 'none';
+                                        e.target.parentNode.innerHTML = `<span style="font-weight: 700; font-size: 0.7rem; color: #999; text-align: center;">${partner.name}</span>`;
+                                    }}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </section>
             <ExpertiseSection />
             <CapabilitySection />
             <ValuePoints />

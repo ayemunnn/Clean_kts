@@ -660,33 +660,74 @@ button {
 }
 
 
-/* Logos Strip */
-.logos-strip {
-    padding: 3rem 0;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+/* Partner Logos Strip */
+.partners-section {
+    padding: 4rem 0;
+    background: #fafafa;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.strip-title {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 2rem;
-    font-weight: 500;
-}
-
-.logos-grid {
+.partners-grid {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
-    opacity: 0.5;
-    filter: grayscale(1);
+    gap: 2.5rem;
 }
 
-.logo-placeholder {
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    font-size: 1rem;
+.partner-logo-container {
+    width: 100px;
+    height: 100px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.partner-logo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-primary);
+}
+
+.partner-logo-img {
+    max-height: 40px;
+    /* Normalized height range 34-44px */
+    max-width: 70%;
+    /* Max 70% of circle diameter */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(1);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.partner-logo-container:hover .partner-logo-img {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .partners-grid {
+        gap: 1.5rem;
+    }
+
+    .partner-logo-container {
+        width: 80px;
+        height: 80px;
+        padding: 12px;
+    }
+
+    .partner-logo-img {
+        max-height: 32px;
+    }
 }
 
 /* Bento Grid */
