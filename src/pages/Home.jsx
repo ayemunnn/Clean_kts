@@ -350,7 +350,7 @@ const Home = () => {
                         ].map((partner) => (
                             <div key={partner.id} className="partner-logo-container" title={partner.name}>
                                 <img
-                                    src={`public/logos/${partner.id}.png`}
+                                    src={`dist/logos/${partner.id}.png`}
                                     alt={`${partner.name} logo`}
                                     className="partner-logo-img"
                                     loading="lazy"
