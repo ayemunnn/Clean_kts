@@ -567,51 +567,262 @@ button {
     transform: translateY(-8px);
 }
 
-/* Platform Capability Highlight */
+/* Platform Capability Highlight - Updated for Futuristic Visual */
 .capability-highlight {
-    background: var(--bg-secondary);
+    background: #0a0f18;
+    /* Deep dark background */
     border-radius: var(--border-radius-xl);
     padding: 5rem;
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 5rem;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.capability-highlight h2,
+.capability-highlight p {
+    color: white !important;
+}
+
+.capability-highlight .chip {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .capability-visual {
     position: relative;
-    height: 400px;
+    height: 500px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
 }
 
-.stacked-card {
+.control-panel-scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Grid & Glow Effects */
+.panel-grid {
     position: absolute;
-    background: white;
-    padding: 1.5rem;
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
-    width: 80%;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    mask-image: radial-gradient(circle at center, black, transparent 80%);
+    pointer-events: none;
 }
 
-.stacked-card:nth-child(1) {
-    top: 0;
-    left: 0;
-    z-index: 3;
+.panel-glow {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at center, rgba(0, 229, 255, 0.15), transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
 }
 
-.stacked-card:nth-child(2) {
-    top: 80px;
-    left: 40px;
-    z-index: 2;
-    opacity: 0.8;
+/* Central Cloud Core */
+.cloud-core-box {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem;
+    background: rgba(0, 229, 255, 0.03);
+    border-radius: 50%;
+    box-shadow:
+        0 0 40px rgba(0, 229, 255, 0.1),
+        inset 0 0 20px rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    backdrop-filter: blur(8px);
 }
 
-.stacked-card:nth-child(3) {
-    top: 160px;
-    left: 80px;
-    z-index: 1;
-    opacity: 0.6;
+.cloud-core-box span {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
 }
 
+/* Data Rings */
+.data-rings-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.orbit-ring {
+    position: absolute;
+    border: 1px dashed rgba(0, 229, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+}
+
+.ring-storage {
+    width: 280px;
+    height: 280px;
+    border-color: rgba(0, 229, 255, 0.3);
+}
+
+.ring-dr {
+    width: 380px;
+    height: 380px;
+    border-color: rgba(249, 115, 22, 0.3);
+}
+
+.ring-ha {
+    width: 480px;
+    height: 480px;
+    border-color: rgba(0, 229, 255, 0.2);
+}
+
+.ring-node {
+    position: absolute;
+    padding: 6px 14px;
+    background: rgba(10, 15, 24, 0.8);
+    border: 1px solid currentColor;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: white;
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.ring-node.cyan {
+    color: #00e5ff;
+    border-color: rgba(0, 229, 255, 0.5);
+}
+
+.ring-node.orange {
+    color: #f97316;
+    border-color: rgba(249, 115, 22, 0.5);
+}
+
+/* Glass UI Panels */
+.glass-panel {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1rem;
+    z-index: 20;
+    width: 160px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel h5 {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.panel-val {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.panel-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.65rem;
+    margin-top: 4px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+}
+
+.status-dot.pulse {
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+}
+
+/* SVG Data Streams */
+.streams-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.stream-path {
+    fill: none;
+    stroke-width: 1;
+    stroke-dasharray: 4 12;
+    animation: stream-flow 10s linear infinite;
+}
+
+.stream-cyan {
+    stroke: rgba(0, 229, 255, 0.3);
+}
+
+.stream-orange {
+    stroke: rgba(249, 115, 22, 0.3);
+}
+
+@keyframes stream-flow {
+    from {
+        stroke-dashoffset: 100;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
 
 /* Value Points Row */
 .value-points-row {

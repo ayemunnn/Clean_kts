@@ -243,40 +243,116 @@ const CapabilitySection = () => {
                     <Link to="/kloud-tech-business-continuity-solution" className="btn btn-primary">Know More</Link>
                 </div>
                 <div className="capability-visual">
-                    <motion.div
-                        className="stacked-card"
-                        whileHover={{ x: 10, y: -10 }}
-                    >
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                            <div className="icon-box" style={{ background: 'var(--accent-soft)', padding: '10px', borderRadius: '8px' }}><Lock size={20} color="var(--accent-primary)" /></div>
-                            <div>
-                                <h4 style={{ margin: 0 }}>Data Security</h4>
-                                <span style={{ fontSize: '0.8rem', color: '#666' }}>Secured Cloud Storage</span>
-                            </div>
+                    <div className="control-panel-scene">
+                        <div className="panel-grid"></div>
+                        <div className="panel-glow"></div>
+
+                        {/* Central Cloud Core */}
+                        <motion.div
+                            className="cloud-core-box"
+                            animate={{
+                                y: [0, -10, 0],
+                                rotateY: [0, 10, 0]
+                            }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            <Cloud size={48} color="#00e5ff" style={{ filter: 'drop-shadow(0 0 15px rgba(0,229,255,0.6))' }} />
+                            <span>Kloudtech Cloud</span>
+                        </motion.div>
+
+                        {/* Data Rings Layer */}
+                        <div className="data-rings-layer">
+                            {/* Storage Ring */}
+                            <motion.div
+                                className="orbit-ring ring-storage"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                            >
+                                <div className="ring-node cyan" style={{ top: '-15px', left: '50%', transform: 'translateX(-50%)' }}>Storage</div>
+                            </motion.div>
+
+                            {/* DR Ring */}
+                            <motion.div
+                                className="orbit-ring ring-dr"
+                                animate={{ rotate: -360 }}
+                                transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                            >
+                                <div className="ring-node orange" style={{ top: '50%', left: '-15px', transform: 'translateY(-50%)' }}>Disaster Recovery</div>
+                            </motion.div>
+
+                            {/* HA Ring */}
+                            <motion.div
+                                className="orbit-ring ring-ha"
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                            >
+                                <div className="ring-node cyan" style={{ bottom: '-15px', right: '50%', transform: 'translateX(50%)' }}>High Availability</div>
+                            </motion.div>
                         </div>
-                    </motion.div>
-                    <motion.div
-                        className="stacked-card"
-                        animate={{ x: [40, 50, 40] }}
-                        transition={{ duration: 5, repeat: Infinity }}
-                    >
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                            <div className="icon-box" style={{ background: '#fef2f2', padding: '10px', borderRadius: '8px' }}><Activity size={20} color="#ef4444" /></div>
-                            <div>
-                                <h4 style={{ margin: 0 }}>Continuity</h4>
-                                <span style={{ fontSize: '0.8rem', color: '#666' }}>Disaster Recovery</span>
-                            </div>
-                        </div>
-                    </motion.div>
-                    <motion.div className="stacked-card">
-                        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                            <div className="icon-box" style={{ background: '#f0fdf4', padding: '10px', borderRadius: '8px' }}><Database size={20} color="#22c55e" /></div>
-                            <div>
-                                <h4 style={{ margin: 0 }}>Storage</h4>
-                                <span style={{ fontSize: '0.8rem', color: '#666' }}>High Availability</span>
-                            </div>
-                        </div>
-                    </motion.div>
+
+                        {/* Data Streams SVG */}
+                        <svg className="streams-svg" viewBox="0 0 500 500">
+                            {/* Replication Flow */}
+                            <motion.path
+                                d="M 250 250 L 250 110"
+                                className="stream-path stream-cyan"
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                animate={{ pathLength: 1, opacity: 1 }}
+                                transition={{ duration: 2, repeat: Infinity }}
+                            />
+                            <motion.path
+                                d="M 250 250 L 60 250"
+                                className="stream-path stream-orange"
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                animate={{ pathLength: 1, opacity: 1 }}
+                                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                            />
+                            <motion.path
+                                d="M 250 250 L 250 440"
+                                className="stream-path stream-cyan"
+                                initial={{ pathLength: 0, opacity: 0 }}
+                                animate={{ pathLength: 1, opacity: 1 }}
+                                transition={{ duration: 4, repeat: Infinity, delay: 0.5 }}
+                            />
+                        </svg>
+
+                        {/* Glass UI Panels */}
+                        <motion.div
+                            className="glass-panel"
+                            style={{ top: '10%', right: '-5%' }}
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            <h5>Storage Status</h5>
+                            <div className="panel-val">99.9% Active</div>
+                            <div className="panel-status"><div className="status-dot pulse"></div> Operational</div>
+                        </motion.div>
+
+                        <motion.div
+                            className="glass-panel"
+                            style={{ bottom: '15%', left: '-10%' }}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.7 }}
+                        >
+                            <h5>Replication Health</h5>
+                            <div className="panel-val">Synced</div>
+                            <div className="panel-status" style={{ color: '#00e5ff' }}>Live Replication</div>
+                        </motion.div>
+
+                        <motion.div
+                            className="glass-panel"
+                            style={{ top: '60%', right: '-12%' }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.9 }}
+                        >
+                            <h5>System Uptime</h5>
+                            <div className="panel-val">365 Days</div>
+                            <div className="panel-status">Zero Failover</div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
