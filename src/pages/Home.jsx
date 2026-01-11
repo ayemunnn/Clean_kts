@@ -228,146 +228,72 @@ const ExpertiseSection = () => {
 };
 
 const CapabilitySection = () => {
-    const [isHovered, setIsHovered] = React.useState(false);
-
     return (
         <section className="section-padding container">
             <div className="capability-highlight">
-                <div>
-                    <h2 className="section-title">Business Continuity Solution</h2>
-                    <p className="text-secondary" style={{ marginBottom: '2rem' }}>
-                        When it comes to business continuity, Kloud Tech is your one-stop solution. Our cloud computing services provide IT resilience during disruptions—especially when remote work becomes necessary. We evaluate cloud services as part of your business continuity planning and recommend solutions that align with your organization’s needs and priorities.
+                <motion.div
+                    className="capability-content-card"
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <span className="eyebrow-pill" style={{ width: 'fit-content', marginBottom: '1.5rem', background: 'rgba(249, 115, 22, 0.1)', color: 'var(--accent-primary)', border: '1px solid rgba(249, 115, 22, 0.2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '2px' }}>Continuity</span>
+                    <h2 className="section-title" style={{ marginTop: 0 }}>Business Continuity Solution</h2>
+                    <p className="text-secondary" style={{ marginBottom: '2.5rem' }}>
+                        When it comes to business continuity, Kloud Tech is your one-stop solution.
+                        Our cloud computing services provide IT resilience during disruptions—especially
+                        when remote work becomes necessary. We evaluate cloud services as part of
+                        your business continuity planning and recommend solutions that align with
+                        your organization’s needs and priorities.
                     </p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
-                        <div className="chip"><CheckCircle2 size={18} color="rgba(255,255,255,0.7)" /> Secure Data Storage</div>
-                        <div className="chip"><CheckCircle2 size={18} color="rgba(255,255,255,0.7)" /> Super-fast Disaster Recovery</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '3rem' }}>
+                        <div className="chip"><CheckCircle2 size={20} color="var(--accent-primary)" /> Secure Data Storage</div>
+                        <div className="chip"><CheckCircle2 size={20} color="var(--accent-primary)" /> Super-fast Disaster Recovery</div>
                     </div>
-                    <Link to="/kloud-tech-business-continuity-solution" className="btn btn-primary">Know More</Link>
-                </div>
-                <div className="capability-visual">
+                    <div>
+                        <Link to="/kloud-tech-business-continuity-solution" className="btn btn-primary">Know More</Link>
+                    </div>
+                </motion.div>
+
+                <div className="capability-visual-stage">
                     <motion.div
                         className="control-panel-scene"
-                        whileHover="reveal"
-                        initial="hidden"
-                        style={{ overflow: 'visible' }}
+                        initial="initial"
+                        whileHover="hover"
                     >
-                        <div className="panel-grid"></div>
+                        {/* Modern Grid Pattern with Fade + Shimmer */}
+                        <motion.div
+                            className="panel-grid"
+                            animate={{
+                                opacity: [0.3, 0.5, 0.3],
+                                scale: [1, 1.02, 1]
+                            }}
+                            transition={{
+                                duration: 8,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        ></motion.div>
+
+                        {/* Calm Glow Background */}
                         <div className="panel-glow"></div>
 
-                        {/* Connection Lines */}
-                        <svg className="connections-layer" viewBox="0 0 500 500">
-                            {[
-                                { x2: 250, y2: 100, color: '#00e5ff', delay: 0 },
-                                { x2: 100, y2: 350, color: '#f97316', delay: 0.1 },
-                                { x2: 400, y2: 350, color: '#00e5ff', delay: 0.2 }
-                            ].map((line, i) => (
-                                <motion.line
-                                    key={i}
-                                    x1="250" y1="250" x2={line.x2} y2={line.y2}
-                                    style={{ stroke: line.color, strokeDasharray: '4 8', strokeWidth: 1 }}
-                                    variants={{
-                                        hidden: { pathLength: 0, opacity: 0 },
-                                        reveal: {
-                                            pathLength: 1,
-                                            opacity: 0.4,
-                                            transition: { duration: 0.8, delay: line.delay, ease: "easeOut" }
-                                        }
-                                    }}
-                                />
-                            ))}
-                        </svg>
-
-                        {/* Service Nodes Layer */}
-                        <div className="data-nodes-container" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 100, overflow: 'visible' }}>
-                            <motion.div
-                                className="service-node cyan"
-                                variants={{
-                                    hidden: { top: '50%', left: '50%', x: '-50%', y: '-50%', opacity: 0, scale: 0 },
-                                    reveal: {
-                                        x: '-50%',
-                                        y: -200,
-                                        opacity: 1,
-                                        scale: 1,
-                                        transition: { type: "spring", damping: 20, stiffness: 100 }
-                                    }
-                                }}
-                                style={{ position: 'absolute', border: '2px solid #00e5ff', color: '#00e5ff', backgroundColor: 'rgba(10, 15, 24, 0.98)' }}
-                            >
-                                <Database size={18} /> Storage
-                            </motion.div>
-
-                            <motion.div
-                                className="service-node orange"
-                                variants={{
-                                    hidden: { top: '50%', left: '50%', x: '-50%', y: '-50%', opacity: 0, scale: 0 },
-                                    reveal: {
-                                        x: -240, y: 100,
-                                        opacity: 1,
-                                        scale: 1,
-                                        transition: { type: "spring", damping: 20, stiffness: 100, delay: 0.1 }
-                                    }
-                                }}
-                                style={{ position: 'absolute', border: '2px solid #f97316', color: '#f97316', backgroundColor: 'rgba(10, 15, 24, 0.98)' }}
-                            >
-                                <Activity size={18} /> Disaster Recovery
-                            </motion.div>
-
-                            <motion.div
-                                className="service-node cyan"
-                                variants={{
-                                    hidden: { top: '50%', left: '50%', x: '-50%', y: '-50%', opacity: 0, scale: 0 },
-                                    reveal: {
-                                        x: 80, y: 100,
-                                        opacity: 1,
-                                        scale: 1,
-                                        transition: { type: "spring", damping: 20, stiffness: 100, delay: 0.2 }
-                                    }
-                                }}
-                                style={{ position: 'absolute', border: '2px solid #00e5ff', color: '#00e5ff', backgroundColor: 'rgba(10, 15, 24, 0.98)' }}
-                            >
-                                <Zap size={18} /> High Availability
-                            </motion.div>
-                        </div>
-
-                        {/* Central Cloud Core */}
+                        {/* Minimal Cloud Core */}
                         <motion.div
-                            className="cloud-core-box"
+                            className="cloud-core-minimal"
                             variants={{
-                                hidden: { scale: 1, backgroundColor: 'rgba(0, 229, 255, 0.05)', boxShadow: '0 0 40px rgba(0, 229, 255, 0.1)' },
-                                reveal: {
-                                    scale: 1.1,
-                                    backgroundColor: 'rgba(0, 229, 255, 0.15)',
-                                    boxShadow: '0 0 60px rgba(0, 229, 255, 0.3)',
-                                    transition: { duration: 0.4 }
+                                initial: { scale: 1, boxShadow: '0 0 50px rgba(0, 229, 255, 0.05)' },
+                                hover: {
+                                    scale: 1.05,
+                                    boxShadow: '0 0 80px rgba(0, 229, 255, 0.15)',
+                                    transition: { duration: 0.4, ease: "easeOut" }
                                 }
                             }}
                         >
-                            <Cloud size={64} color="#00e5ff" style={{ filter: 'drop-shadow(0 0 15px rgba(0,229,255,0.4))' }} />
+                            <Cloud size={80} color="white" />
                             <span>Kloudtech Cloud</span>
                         </motion.div>
-
-                        {/* Glass Panels - Subtle reactivity in variants */}
-                        {[
-                            { pos: { top: '5%', right: '-8%' }, title: 'Storage Status', val: '99.9% Active', status: 'Operational' },
-                            { pos: { bottom: '10%', left: '-12%' }, title: 'Replication Health', val: 'Synced', status: 'Live Replication', color: '#00e5ff' },
-                            { pos: { bottom: '30%', right: '-15%' }, title: 'System Uptime', val: '365 Days', status: 'Zero Failover' }
-                        ].map((p, i) => (
-                            <motion.div
-                                key={i}
-                                className="glass-panel"
-                                style={p.pos}
-                                variants={{
-                                    hidden: { opacity: 1, filter: 'blur(0px)' },
-                                    reveal: { opacity: 0.5, filter: 'blur(1px)', transition: { duration: 0.4 } }
-                                }}
-                            >
-                                <h5>{p.title}</h5>
-                                <div className="panel-val">{p.val}</div>
-                                <div className="panel-status" style={p.color ? { color: p.color } : {}}>
-                                    {i === 0 && <div className="status-dot pulse"></div>} {p.status}
-                                </div>
-                            </motion.div>
-                        ))}
                     </motion.div>
                 </div>
             </div>
