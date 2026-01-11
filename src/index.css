@@ -601,16 +601,19 @@ button {
     align-items: center;
     justify-content: center;
     perspective: 1200px;
+    background: rgba(0, 0, 0, 0.2);
+    /* Subtle contrast */
+    border-radius: 20px;
 }
 
 .control-panel-scene {
     position: relative;
     width: 100%;
     height: 100%;
-    transform-style: preserve-3d;
     display: flex;
     align-items: center;
     justify-content: center;
+    transform-style: preserve-3d;
 }
 
 /* Grid & Glow Effects */
@@ -637,20 +640,30 @@ button {
 /* Central Cloud Core */
 .cloud-core-box {
     position: relative;
-    z-index: 10;
+    z-index: 50;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    padding: 2rem;
-    background: rgba(0, 229, 255, 0.03);
+    width: 160px;
+    height: 160px;
+    background: rgba(0, 229, 255, 0.05);
     border-radius: 50%;
     box-shadow:
         0 0 40px rgba(0, 229, 255, 0.1),
-        inset 0 0 20px rgba(0, 229, 255, 0.1);
-    border: 1px solid rgba(0, 229, 255, 0.2);
-    backdrop-filter: blur(8px);
+        inset 0 0 30px rgba(0, 229, 255, 0.1);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cloud-core-box:hover {
+    background: rgba(0, 229, 255, 0.1);
+    border-color: rgba(0, 229, 255, 0.6);
+    box-shadow: 0 0 60px rgba(0, 229, 255, 0.2);
 }
 
 .cloud-core-box span {
@@ -661,69 +674,79 @@ button {
     letter-spacing: 2px;
     color: #00e5ff;
     text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    pointer-events: none;
 }
 
-/* Data Rings */
-.data-rings-layer {
+/* Data Rings - Now Container for Nodes */
+.data-nodes-container {
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
-}
-
-.orbit-ring {
-    position: absolute;
-    border: 1px dashed rgba(0, 229, 255, 0.2);
-    border-radius: 50%;
+    pointer-events: none;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-style: preserve-3d;
+    pointer-events: none;
+    z-index: 45;
 }
 
-.ring-storage {
-    width: 280px;
-    height: 280px;
-    border-color: rgba(0, 229, 255, 0.3);
-}
-
-.ring-dr {
-    width: 380px;
-    height: 380px;
-    border-color: rgba(249, 115, 22, 0.3);
-}
-
-.ring-ha {
-    width: 480px;
-    height: 480px;
-    border-color: rgba(0, 229, 255, 0.2);
-}
-
-.ring-node {
+.service-node {
     position: absolute;
-    padding: 6px 14px;
-    background: rgba(10, 15, 24, 0.8);
-    border: 1px solid currentColor;
+    padding: 10px 24px;
+    background: rgba(10, 15, 24, 0.95);
     border-radius: 100px;
-    font-size: 0.7rem;
-    font-weight: 600;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: white;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
     white-space: nowrap;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 60;
+    pointer-events: auto;
 }
 
-.ring-node.cyan {
+.service-node.cyan {
+    border: 1px solid rgba(0, 229, 255, 0.5);
     color: #00e5ff;
-    border-color: rgba(0, 229, 255, 0.5);
 }
 
-.ring-node.orange {
+.service-node.orange {
+    border: 1px solid rgba(249, 115, 22, 0.5);
     color: #f97316;
-    border-color: rgba(249, 115, 22, 0.5);
+}
+
+/* Connection Lines Layer */
+.connections-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 30;
+}
+
+.connection-line {
+    fill: none;
+    stroke-width: 1.5;
+    stroke-dasharray: 4 8;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+.line-cyan {
+    stroke: rgba(0, 229, 255, 0.4);
+    color: rgba(0, 229, 255, 0.4);
+}
+
+.line-orange {
+    stroke: rgba(249, 115, 22, 0.4);
+    color: rgba(249, 115, 22, 0.4);
 }
 
 /* Glass UI Panels */
@@ -789,7 +812,7 @@ button {
     }
 }
 
-/* SVG Data Streams */
+/* SVG Data Streams - Hidden in Minimal View */
 .streams-svg {
     position: absolute;
     inset: 0;
@@ -797,6 +820,8 @@ button {
     height: 100%;
     pointer-events: none;
     z-index: 5;
+    opacity: 0;
+    transition: opacity 1s ease;
 }
 
 .stream-path {
