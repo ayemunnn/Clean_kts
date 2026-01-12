@@ -21,7 +21,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const SecurityHero = () => (
-    <section className="solution-hero section-padding">
+    <section className="solution-hero">
         <div className="container hero-grid">
             <motion.div
                 className="hero-left"

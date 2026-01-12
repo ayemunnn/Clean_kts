@@ -237,7 +237,22 @@ button {
     align-items: center;
     position: relative;
     z-index: 2;
-    min-height: 500px;
+}
+
+/* Solution Hero Architecture */
+.solution-hero {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    padding: 5rem 0;
+    /* Reduced from 8rem to minimize whitespace */
+    background-color: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.solution-hero .container {
+    width: 100%;
 }
 
 /* Readability Surface for Left Text */
