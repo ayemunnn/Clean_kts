@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Cloud, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,9 @@ const Header = () => {
     const location = useLocation();
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 20);
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -19,44 +21,79 @@ const Header = () => {
         setIsOpen(false);
     }, [location]);
 
+    const navLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Solutions', path: '/solutions' },
+        { name: 'Managed Services', path: '/managed-services' },
+        { name: 'Contact', path: '/contact' },
+    ];
+
     return (
-        <header className={`sticky-header ${scrolled ? 'scrolled' : ''}`}>
-            <div className="container header-content">
-                <Link to="/" className="logo">
-                    <Cloud className="logo-icon" size={24} />
-                    <span>Kloud Tech Solutions</span>
-                </Link>
+        <header className={`navbar-wrapper ${scrolled ? 'is-scrolled' : ''}`}>
+            <div className="navbar-float-container">
+                <div className="navbar-glass-bar">
+                    <Link to="/" className="logo">
+                        <Cloud className="logo-icon" size={24} />
+                        <span>Kloud Tech Solutions</span>
+                    </Link>
 
-                <nav className="desktop-nav">
-                    <Link to="/">Home</Link>
-                    <Link to="/solutions">Solutions</Link>
-                    <Link to="/managed-services">Managed Services</Link>
-                    <Link to="/contact">Contact</Link>
-                </nav>
+                    <nav className="desktop-nav">
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.name}
+                                to={link.path}
+                                className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+                                end={link.path === '/'}
+                            >
+                                {link.name}
+                                {location.pathname === link.path || (link.path === '/' && location.pathname === '/') ? (
+                                    <motion.div
+                                        layoutId="nav-pill"
+                                        className="nav-active-pill"
+                                        transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                                    />
+                                ) : null}
+                            </NavLink>
+                        ))}
+                    </nav>
 
-                <div className="header-cta">
-                    <Link to="/contact" className="btn btn-primary">Book a Consultation</Link>
+                    <div className="header-cta">
+                        <Link to="/contact" className="btn btn-primary nav-cta">
+                            Book a Consultation
+                        </Link>
+                    </div>
+
+                    <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
+                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
                 </div>
-
-                <button className="mobile-toggle" onClick={() => setIsOpen(!isOpen)}>
-                    {isOpen ? <X /> : <Menu />}
-                </button>
             </div>
 
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        className="mobile-menu"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
+                        className="mobile-glass-menu"
+                        initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
                     >
-                        <div className="container mobile-links">
-                            <Link to="/">Home</Link>
-                            <Link to="/solutions">Solutions</Link>
-                            <Link to="/managed-services">Managed Services</Link>
-                            <Link to="/contact">Contact</Link>
-                            <Link to="/contact" className="btn btn-primary full-width">Book a Consultation</Link>
+                        <div className="mobile-links">
+                            {navLinks.map((link) => (
+                                <NavLink
+                                    key={link.name}
+                                    to={link.path}
+                                    className={({ isActive }) => `mobile-nav-item ${isActive ? 'active' : ''}`}
+                                    end={link.path === '/'}
+                                >
+                                    {link.name}
+                                </NavLink>
+                            ))}
+                            <div className="mobile-cta-wrapper">
+                                <Link to="/contact" className="btn btn-primary full-width">
+                                    Book a Consultation
+                                </Link>
+                            </div>
                         </div>
                     </motion.div>
                 )}

@@ -57,17 +57,18 @@ const SecurityHero = () => (
                                 d="M 10 50 A 40 40 0 0 1 90 50"
                                 fill="none"
                                 stroke="#f1f5f9"
-                                strokeWidth="12"
+                                strokeWidth="10"
                                 strokeLinecap="round"
                             />
                             <path
-                                d="M 10 50 A 40 40 0 0 1 85 20"
+                                d="M 10 50 A 40 40 0 0 1 90 50"
                                 fill="none"
                                 stroke="var(--accent-primary)"
-                                strokeWidth="12"
+                                strokeWidth="10"
                                 strokeLinecap="round"
-                                strokeDasharray="120"
-                                strokeDashoffset="0"
+                                strokeDasharray="125.6"
+                                strokeDashoffset="2.51"
+                                style={{ filter: 'drop-shadow(0 0 8px rgba(249, 115, 22, 0.3))' }}
                             />
                         </svg>
                         <div className="gauge-val">98</div>
