@@ -1054,16 +1054,39 @@ button {
 
 /* CTA Band */
 .cta-band {
-    background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-    padding: 6rem 0;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+    padding: 6rem 2rem;
     text-align: center;
     color: white;
     border-radius: var(--border-radius-xl);
+    box-shadow: 0 30px 60px -12px rgba(249, 115, 22, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .cta-band h2 {
     color: white;
-    margin-bottom: 2rem;
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.btn-cta-light {
+    background: white !important;
+    color: var(--accent-primary) !important;
+    padding: 1rem 2.5rem !important;
+    font-weight: 800 !important;
+    font-size: 1.1rem !important;
+    border-radius: 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.btn-cta-light:hover {
+    background: var(--accent-soft) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
 }
 
 

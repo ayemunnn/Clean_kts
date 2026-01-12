@@ -406,8 +406,10 @@ const FinalCTA = () => {
                 <p className="text-lg" style={{ color: 'rgba(255,255,255,0.9)', maxWidth: '800px', margin: '0 auto 3rem' }}>
                     Kloud Tech Solutions enhances business acceleration through IT, leveraging agility, intelligence, and deep technical expertise.
                 </p>
-                <div className="cta-row-center" style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem' }}>
-                    <Link to="/contact" className="btn btn-secondary" style={{ color: 'var(--accent-primary)', fontWeight: 700 }}>Get in Touch</Link>
+                <div className="cta-row-center">
+                    <Link to="/contact" className="btn btn-cta-light">
+                        Get in Touch <ArrowRight size={20} />
+                    </Link>
                 </div>
             </div>
         </section>
