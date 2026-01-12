@@ -11,7 +11,7 @@ import {
     FileText,
     Activity
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const SolutionsHero = () => (
@@ -114,37 +114,223 @@ const SolutionsGrid = () => {
     );
 };
 
-const DiscoveryStrip = () => (
-    <section className="section-padding">
-        <div className="container">
-            <div className="discovery-box">
-                <div className="discovery-content">
-                    <span className="eyebrow">Interactive Guide</span>
-                    <h2>Not sure what you need?</h2>
-                    <p>Answer a few questions and we'll recommend a path based on your specific goals.</p>
-                    <Link to="/contact" className="btn btn-primary mt-2">Talk to an Architect</Link>
-                </div>
-                <div className="discovery-form-ui">
-                    <div className="form-ui-step">
-                        <label>Company Size</label>
-                        <div className="ui-select">Select range...</div>
+const GUIDE_CONFIG = {
+    options: {
+        companySize: [
+            "Solo / Startup (1–10)",
+            "Small Business (11–50)",
+            "Mid-Market (51–250)",
+            "Enterprise (251+)"
+        ],
+        primaryGoal: [
+            "Migrate to Cloud",
+            "Improve Security / Compliance",
+            "Business Continuity / Disaster Recovery",
+            "Reduce IT Costs",
+            "Enable Remote Work",
+            "Improve Performance / Scalability"
+        ],
+        timeline: [
+            "ASAP (0–2 weeks)",
+            "Soon (2–6 weeks)",
+            "Planned (6–12 weeks)",
+            "Exploratory (3+ months)"
+        ]
+    },
+    recommendations: {
+        "Migrate to Cloud": {
+            primary: { title: "Cloud Migration Strategy", desc: "Expert assessment and execution of your cloud transition.", link: "/kts-cloud-migration-solution" },
+            secondary: [
+                { title: "Cloud Services", link: "/kts-cloud-services" },
+                { title: "IT Infrastructure", link: "/kts-it-infrastructure-security-solutions" }
+            ]
+        },
+        "Improve Security / Compliance": {
+            primary: { title: "IT Infrastructure & Security", desc: "Hardened security posture and compliance frameworks.", link: "/kts-it-infrastructure-security-solutions" },
+            secondary: [
+                { title: "Managed Services", link: "/managed-services" },
+                { title: "Business Continuity", link: "/kloud-tech-business-continuity-solution" }
+            ]
+        },
+        "Business Continuity / Disaster Recovery": {
+            primary: { title: "Business Continuity Planning", desc: "Zero-data-loss strategies and rapid failover systems.", link: "/kloud-tech-business-continuity-solution" },
+            secondary: [
+                { title: "Data Center Solutions", link: "/kts-data-center-solution" },
+                { title: "IT Infrastructure", link: "/kts-it-infrastructure-security-solutions" }
+            ]
+        },
+        "Reduce IT Costs": {
+            primary: { title: "Managed IT Services", desc: "Predictable monthly costs and optimized resource utilization.", link: "/managed-services" },
+            secondary: [
+                { title: "Cloud Services", link: "/kts-cloud-services" },
+                { title: "Data Automation", link: "/kts-data-extraction-automation" }
+            ]
+        },
+        "Enable Remote Work": {
+            primary: { title: "Modern Workplace Solutions", desc: "Secure, performant remote access and collaboration tools.", link: "/kts-cloud-services" },
+            secondary: [
+                { title: "Managed Services", link: "/managed-services" },
+                { title: "IT Infrastructure", link: "/kts-it-infrastructure-security-solutions" }
+            ]
+        },
+        "Improve Performance / Scalability": {
+            primary: { title: "High-Performance Data Center", desc: "Scalable compute and storage tailored for growth.", link: "/kts-data-center-solution" },
+            secondary: [
+                { title: "Cloud Migration", link: "/kts-cloud-migration-solution" },
+                { title: "Cloud Services", link: "/kts-cloud-services" }
+            ]
+        }
+    }
+};
+
+const DiscoveryStrip = () => {
+    const [selections, setSelections] = React.useState({
+        companySize: "",
+        primaryGoal: "",
+        timeline: ""
+    });
+
+    const completionCount = Object.values(selections).filter(v => v !== "").length;
+    const progressWidth = (completionCount / 3) * 100;
+    const isComplete = completionCount === 3;
+
+    const recommendation = isComplete ? GUIDE_CONFIG.recommendations[selections.primaryGoal] : null;
+
+    const getArchitectLink = () => {
+        const message = encodeURIComponent(
+            `I'd like to discuss a tailored solution.\n\n` +
+            `Company Size: ${selections.companySize || 'Not specified'}\n` +
+            `Primary Goal: ${selections.primaryGoal || 'Not specified'}\n` +
+            `Timeline: ${selections.timeline || 'Not specified'}`
+        );
+        return `/contact?message=${message}`;
+    };
+
+    return (
+        <section className="section-padding">
+            <div className="container">
+                <div className="discovery-box">
+                    <div className="discovery-content">
+                        <span className="eyebrow">Interactive Guide</span>
+                        <h2>Not sure what you need?</h2>
+                        <p>Answer a few questions and we'll recommend a path based on your specific goals.</p>
+
+                        <AnimatePresence mode="wait">
+                            {isComplete ? (
+                                <motion.div
+                                    className="recommendation-panel"
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
+                                >
+                                    <div className="rec-badge">Recommended Path</div>
+                                    <h3>{recommendation.primary.title}</h3>
+                                    <p className="rec-desc">{recommendation.primary.desc}</p>
+
+                                    <div className="rec-secondary">
+                                        <span>Related solutions:</span>
+                                        <div className="rec-chips">
+                                            {recommendation.secondary.map((s, i) => (
+                                                <Link key={i} to={s.link} className="rec-chip">
+                                                    {s.title}
+                                                </Link>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div className="cta-row mt-2">
+                                        <Link to={recommendation.primary.link} className="btn btn-primary">
+                                            View Solution Details <ArrowRight size={16} />
+                                        </Link>
+                                        <Link to={getArchitectLink()} className="btn btn-secondary">
+                                            Talk to an Architect
+                                        </Link>
+                                    </div>
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                >
+                                    <Link to="/contact" className="btn btn-primary mt-2">Talk to an Architect</Link>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
-                    <div className="form-ui-step">
-                        <label>Primary Goal</label>
-                        <div className="ui-select">Select goal...</div>
-                    </div>
-                    <div className="form-ui-step">
-                        <label>Timeline</label>
-                        <div className="ui-select">Select timeline...</div>
-                    </div>
-                    <div className="form-ui-progress">
-                        <div className="progress-bar-inner" style={{ width: '33%' }}></div>
+
+                    <div className="discovery-form-ui">
+                        <div className="form-ui-step">
+                            <label>Company Size</label>
+                            <div className="ui-select-wrapper">
+                                <select
+                                    className="ui-native-select"
+                                    value={selections.companySize}
+                                    onChange={(e) => setSelections({ ...selections, companySize: e.target.value })}
+                                >
+                                    <option value="" disabled>Select range...</option>
+                                    {GUIDE_CONFIG.options.companySize.map(opt => (
+                                        <option key={opt} value={opt}>{opt}</option>
+                                    ))}
+                                </select>
+                                <div className={`ui-select-custom ${selections.companySize ? 'has-value' : ''}`}>
+                                    {selections.companySize || 'Select range...'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="form-ui-step">
+                            <label>Primary Goal</label>
+                            <div className="ui-select-wrapper">
+                                <select
+                                    className="ui-native-select"
+                                    value={selections.primaryGoal}
+                                    onChange={(e) => setSelections({ ...selections, primaryGoal: e.target.value })}
+                                >
+                                    <option value="" disabled>Select goal...</option>
+                                    {GUIDE_CONFIG.options.primaryGoal.map(opt => (
+                                        <option key={opt} value={opt}>{opt}</option>
+                                    ))}
+                                </select>
+                                <div className={`ui-select-custom ${selections.primaryGoal ? 'has-value' : ''}`}>
+                                    {selections.primaryGoal || 'Select goal...'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="form-ui-step">
+                            <label>Timeline</label>
+                            <div className="ui-select-wrapper">
+                                <select
+                                    className="ui-native-select"
+                                    value={selections.timeline}
+                                    onChange={(e) => setSelections({ ...selections, timeline: e.target.value })}
+                                >
+                                    <option value="" disabled>Select timeline...</option>
+                                    {GUIDE_CONFIG.options.timeline.map(opt => (
+                                        <option key={opt} value={opt}>{opt}</option>
+                                    ))}
+                                </select>
+                                <div className={`ui-select-custom ${selections.timeline ? 'has-value' : ''}`}>
+                                    {selections.timeline || 'Select timeline...'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="form-ui-progress">
+                            <motion.div
+                                className="progress-bar-inner"
+                                animate={{ width: `${progressWidth}%` }}
+                                transition={{ duration: 0.5, ease: "circOut" }}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
 
 const FinalCTA = () => (
     <section className="section-padding py-0">
