@@ -297,11 +297,11 @@ button {
 
 /* Hero */
 .hero-section {
-    height: calc(100vh - 88px);
-    min-height: 560px;
+    min-height: calc(100vh - 120px);
     display: flex;
     align-items: center;
-    padding: 1rem 0;
+    padding: 120px 0 60px;
+    /* Offset for floating navbar + breathing room */
     position: relative;
 }
 
@@ -346,11 +346,11 @@ button {
 
 /* Solution Hero Architecture */
 .solution-hero {
-    min-height: calc(100vh - 80px);
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 5rem 0;
-    /* Reduced from 8rem to minimize whitespace */
+    padding: 140px 0 80px;
+    /* Enhanced offset for solution pages */
     background-color: var(--bg-primary);
     position: relative;
     overflow: hidden;
