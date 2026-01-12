@@ -199,7 +199,7 @@ const ExpertiseSection = () => {
 
     return (
         <section className="section-padding container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '4rem', alignItems: 'flex-end' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '4rem', alignItems: 'center' }}>
                 <div>
                     <span className="eyebrow-pill">Our Expertise</span>
                     <h2 className="section-title" style={{ marginBottom: 0 }}>Our Expertise in Corporate Solutions</h2>
