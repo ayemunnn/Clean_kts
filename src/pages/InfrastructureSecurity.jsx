@@ -25,11 +25,11 @@ const SecurityHero = () => (
         <div className="container hero-grid">
             <motion.div
                 className="hero-left"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
             >
-                <span className="eyebrow">Enterprise Security</span>
+                <div className="eyebrow">Enterprise Security</div>
                 <h1 className="heading-xl">IT Infrastructure & Security</h1>
                 <p className="text-lg">
                     Secure, monitor, and manage the systems that power your business—network, endpoints, identity, and access.
@@ -41,15 +41,34 @@ const SecurityHero = () => (
             </motion.div>
 
             <div className="hero-right">
-                <div className="security-ui-card animate-float">
+                <motion.div
+                    className="security-ui-card"
+                    initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                >
                     <div className="security-ui-header">
                         <span>Security Posture</span>
                         <div className="score-badge">98% Secure</div>
                     </div>
                     <div className="posture-gauge">
-                        <svg viewBox="0 0 100 50">
-                            <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#eee" strokeWidth="8" />
-                            <path d="M 10 50 A 40 40 0 0 1 85 20" fill="none" stroke="var(--accent-primary)" strokeWidth="8" />
+                        <svg viewBox="0 0 100 60" style={{ width: '100%', height: 'auto' }}>
+                            <path
+                                d="M 10 50 A 40 40 0 0 1 90 50"
+                                fill="none"
+                                stroke="#f1f5f9"
+                                strokeWidth="12"
+                                strokeLinecap="round"
+                            />
+                            <path
+                                d="M 10 50 A 40 40 0 0 1 85 20"
+                                fill="none"
+                                stroke="var(--accent-primary)"
+                                strokeWidth="12"
+                                strokeLinecap="round"
+                                strokeDasharray="120"
+                                strokeDashoffset="0"
+                            />
                         </svg>
                         <div className="gauge-val">98</div>
                     </div>
@@ -68,7 +87,7 @@ const SecurityHero = () => (
                             <span>Backup verified: 10 mins ago</span>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </div>
     </section>
