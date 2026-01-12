@@ -276,7 +276,7 @@ const CapabilitySection = () => {
                             }}
                             variants={{
                                 initial: { opacity: 0.4 },
-                                hover: { opacity: 0.8 }
+                                hover: { opacity: 1 }
                             }}
                             transition={{
                                 scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
@@ -289,10 +289,56 @@ const CapabilitySection = () => {
                             className="panel-glow"
                             variants={{
                                 initial: { scale: 1, opacity: 0.6 },
-                                hover: { scale: 1.03, opacity: 1 }
+                                hover: { scale: 1.3, opacity: 1 }
                             }}
                             transition={{ duration: 0.8 }}
                         ></motion.div>
+
+                        {/* Data Pulse Ring */}
+                        <motion.div
+                            className="data-pulse-ring"
+                            variants={{
+                                initial: { scale: 1, opacity: 0 },
+                                hover: {
+                                    scale: [1, 2.5],
+                                    opacity: [0, 0.5, 0],
+                                    transition: {
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeOut"
+                                    }
+                                }
+                            }}
+                        ></motion.div>
+
+                        {/* Micro-labels that slide out */}
+                        {[
+                            { text: "Encrypted Storage", x: -170, y: -70, delay: 0.1 },
+                            { text: "Instant Failover", x: 170, y: -10, delay: 0.2 },
+                            { text: "99.99% Availability", x: -130, y: 70, delay: 0.3 }
+                        ].map((label, idx) => (
+                            <motion.div
+                                key={idx}
+                                className="micro-label"
+                                variants={{
+                                    initial: { x: 0, y: 0, opacity: 0, scale: 0.5 },
+                                    hover: {
+                                        x: label.x,
+                                        y: label.y,
+                                        opacity: 1,
+                                        scale: 1,
+                                        transition: {
+                                            delay: label.delay,
+                                            type: "spring",
+                                            stiffness: 100,
+                                            damping: 18
+                                        }
+                                    }
+                                }}
+                            >
+                                {label.text}
+                            </motion.div>
+                        ))}
 
                         {/* Minimal Cloud Core */}
                         <motion.div
