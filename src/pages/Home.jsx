@@ -230,31 +230,37 @@ const ExpertiseSection = () => {
 const CapabilitySection = () => {
     return (
         <section className="section-padding container">
-            <div className="capability-highlight">
-                <motion.div
-                    className="capability-content-card"
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <span className="eyebrow-pill" style={{ width: 'fit-content', marginBottom: '1.5rem', background: 'rgba(249, 115, 22, 0.1)', color: 'var(--accent-primary)', border: '1px solid rgba(249, 115, 22, 0.2)', textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: '2px' }}>Continuity</span>
-                    <h2 className="section-title" style={{ marginTop: 0 }}>Business Continuity Solution</h2>
-                    <p className="text-secondary" style={{ marginBottom: '2.5rem' }}>
+            <motion.div
+                className="capability-highlight"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="capability-content-card">
+                    <span className="eyebrow-pill branded-badge">Continuity</span>
+
+                    <div className="capability-accent-line branded-line"></div>
+
+                    <h2 className="section-title" style={{ marginTop: 0, color: 'white', marginBottom: '1.5rem' }}>Business Continuity Solution</h2>
+
+                    <p className="text-secondary" style={{ marginBottom: '2.5rem', color: 'rgba(255,255,255,0.7)' }}>
                         When it comes to business continuity, Kloud Tech is your one-stop solution.
                         Our cloud computing services provide IT resilience during disruptions—especially
                         when remote work becomes necessary. We evaluate cloud services as part of
                         your business continuity planning and recommend solutions that align with
                         your organization’s needs and priorities.
                     </p>
+
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '3rem' }}>
-                        <div className="chip"><CheckCircle2 size={20} color="var(--accent-primary)" /> Secure Data Storage</div>
-                        <div className="chip"><CheckCircle2 size={20} color="var(--accent-primary)" /> Super-fast Disaster Recovery</div>
+                        <div className="chip" style={{ color: 'white' }}><CheckCircle2 size={20} className="branded-icon" /> Secure Data Storage</div>
+                        <div className="chip" style={{ color: 'white' }}><CheckCircle2 size={20} className="branded-icon" /> Super-fast Disaster Recovery</div>
                     </div>
+
                     <div>
-                        <Link to="/kloud-tech-business-continuity-solution" className="btn btn-primary">Know More</Link>
+                        <Link to="/kloud-tech-business-continuity-solution" className="btn btn-primary branded-btn">Know More</Link>
                     </div>
-                </motion.div>
+                </div>
 
                 <div className="capability-visual-stage">
                     <motion.div
@@ -266,39 +272,52 @@ const CapabilitySection = () => {
                         <motion.div
                             className="panel-grid"
                             animate={{
-                                opacity: [0.3, 0.5, 0.3],
                                 scale: [1, 1.02, 1]
                             }}
+                            variants={{
+                                initial: { opacity: 0.4 },
+                                hover: { opacity: 0.8 }
+                            }}
                             transition={{
-                                duration: 8,
-                                repeat: Infinity,
-                                ease: "easeInOut"
+                                scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                                opacity: { duration: 0.4 }
                             }}
                         ></motion.div>
 
                         {/* Calm Glow Background */}
-                        <div className="panel-glow"></div>
+                        <motion.div
+                            className="panel-glow"
+                            variants={{
+                                initial: { scale: 1, opacity: 0.6 },
+                                hover: { scale: 1.03, opacity: 1 }
+                            }}
+                            transition={{ duration: 0.8 }}
+                        ></motion.div>
 
                         {/* Minimal Cloud Core */}
                         <motion.div
                             className="cloud-core-minimal"
                             variants={{
-                                initial: { scale: 1, boxShadow: '0 0 50px rgba(0, 229, 255, 0.05)' },
+                                initial: { scale: 1, rotate: 0 },
                                 hover: {
-                                    scale: 1.05,
-                                    boxShadow: '0 0 80px rgba(0, 229, 255, 0.15)',
-                                    transition: { duration: 0.4, ease: "easeOut" }
+                                    scale: 1.03,
+                                    rotate: [0, -1, 1, 0],
+                                    transition: {
+                                        scale: { duration: 0.4, ease: "easeOut" },
+                                        rotate: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                                    }
                                 }
                             }}
                         >
-                            <Cloud size={80} color="white" />
+                            <Cloud size={80} color="white" style={{ filter: 'drop-shadow(0 0 20px rgba(249, 115, 22, 0.4))' }} />
                             <span>Kloudtech Cloud</span>
                         </motion.div>
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
+
 };
 
 const ValuePoints = () => {
